@@ -1,0 +1,510 @@
+ 
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 19;
+} 
+
+
+/* Variables */
+:root {
+  --slider_width: 85%;
+  --radio_size: 16px;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+}
+
+#banner_img {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* content:url("img/Spicy_Covid_Graphs_Logo.png"); */
+}
+/* 
+.top_regions_buttons {
+  width: 24px;
+  height:24px;
+} */
+
+
+#banner_background {
+  width: 100%;
+  height: 182px;
+  float: left;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: rgb(243,151,11);
+  background: linear-gradient( rgba(243,151,11,1) 0%, rgba(255,255,255,1) 100%);
+}
+
+#footer_content {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  position: absolute;
+  left: 20px;
+}
+
+#footer_background {
+  width: 100%;
+  height: 91px;
+  float: left;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: rgb(243,151,11);
+  background: linear-gradient( rgba(255,255,255,1) 0%, rgba(243,151,11,1) 100%);
+}
+
+input, textarea, select, button {
+  font-size: 16px; 
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#horiz-spacer {
+  clear:both;
+  margin-top:5px;
+  margin-bottom:.5cm;
+}
+
+#vert-spacer {
+  margin-left:.25cm;
+  margin-right:.25cm;
+}
+
+
+#jsxbox {
+  width: 90%;
+  height: 50vh; 
+  clear:both;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto; /* center */
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+
+}
+
+
+#rolling_days {
+  width:9%;
+}
+
+
+#rolling_avg_box {
+  width: 450px;
+  /* height: 50vh;  */
+  clear:both;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+
+  line-height: normal;
+  background-color: rgb(214, 214, 214);
+  border: rgb(214, 214, 214);
+  /* display: inline-block;  */
+  /* width: auto; */
+  padding: 4px;
+  border-radius: 5px;
+
+}
+
+
+.small-float-box {
+  line-height: normal;
+  background-color: rgb(223, 223, 223);
+  border: rgb(223, 223, 223);
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.small-text-border {
+  background-color: rgb(250, 230, 201);
+  border:  rgb(250, 230, 201);
+  vertical-align: top;
+  border-radius: 5px;
+}
+
+.my_center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* BEGIN Custom Radio Boxes */
+
+/* Customize the label (the container) */
+.radio_container {
+  float: left;
+  display: block;
+  position: relative;
+  padding-left: calc(var(--radio_size)*1.59);
+  margin-top: calc(var(--radio_size) *.54);
+  margin-bottom: calc(var(--radio_size) *.54);
+  margin-right: calc(var(--radio_size) *.54);
+  margin-left: calc(var(--radio_size) *.54);
+  cursor: pointer;
+  font-size: var(--radio_size);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio_container input {
+  float: left;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.radio_checkmark {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(var(--radio_size) * 1.13);
+  width: calc(var(--radio_size)  * 1.13);
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio_container:hover input ~ .radio_checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio_container input:checked ~ .radio_checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio_checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio_container input:checked ~ .radio_checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio_container .radio_checkmark:after {
+  float: left;
+  top: calc(var(--radio_size) *.41);
+  left: calc(var(--radio_size) *.41);
+  width: calc(var(--radio_size) *.36);
+  height: calc(var(--radio_size) *.36);
+  border-radius: 50%;
+  background: white;
+}
+
+/* END CUSTOM RADIO */
+
+
+
+
+#console {
+    clear:both;
+    display:block;
+    width: 90%;
+    height: 300px; 
+
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto; /* center */
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    /* border: 2px solid rgb(90, 90, 90);
+    border-radius: 5px; */
+}
+
+
+/* BEGIN Custom Slider */
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;  
+  background: #797979;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+  
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; 
+  background: #4958db;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4958db;
+  cursor: pointer;
+}
+
+/* END Custom Slider */
+
+/* JSXGraph */
+.jsxgDefaultFont {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18;
+  border: 1px solid black;
+}
+
+.region_labels_dark, .region_labels_dark_highlight {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: rgba(255, 255, 255, 0.438);
+  background-clip: padding-box;
+  opacity: 50%;
+  padding: 3px;
+  border-radius:10px;
+  text-shadow: /* text outline compatible with non-webkit */
+  -1px -1px 0 rgb(255, 255, 255),
+  1px -1px 0 rgb(255, 255, 255),
+  -1px 1px 0 rgb(255, 255, 255),
+  1px 1px 0 rgb(255, 255, 255);  
+}
+
+.region_labels_bright_mobile, .region_labels_bright_mobile_highlight {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: rgba(255, 255, 255, 0.438);
+  background-clip: padding-box;
+  opacity: 50%;
+  padding: 3px;
+  border-radius:10px;
+  text-shadow: /* text outline compatible with non-webkit */
+   -1px -1px 0 rgb(54, 54, 54),
+  1px -1px 0  rgb(54, 54, 54),
+  -1px 1px 0   rgb(54, 54, 54),
+  1px 1px 0    rgb(54, 54, 54);
+}
+
+
+
+.region_labels_bright, .region_labels_bright_highlight {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: rgba(255, 255, 255, 0.438);
+  background-clip: padding-box;
+  opacity: 50%;
+  padding: 3px;
+  border-radius:10px;
+  text-shadow: /* text outline compatible with non-webkit */
+   -1px -1px 0 rgb(255, 255, 255),
+  /* 1px -1px 0 rgb(180, 180, 180), */
+  /* -1px 1px 0  rgb(180, 180, 180), */
+  1px 1px 0  rgb(180, 180, 180);
+}
+
+  /* .region_labels_highlight {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: rgba(255, 255, 255, 0.438);
+  background-clip: padding-box;
+  opacity: 50%;
+  padding: 5px;
+  border-radius:5px;
+  } */
+
+
+  /* For Mobile */
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    body {
+      font-size: 16px;
+    }
+
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 8px;
+    }
+    
+
+    :root {
+      --slider_width: 90px;
+      --radio_size: 16px;
+    }
+
+    #banner_img {
+      float: left;
+      position: absolute;
+      top: 0;
+      left: 0;
+      content:url("img/Spicy_Covid_Graphs_Logo_Small.png");
+    }
+
+    
+    #banner_background {
+      height: 91px;
+      /* border-top-left-radius: 6px;
+      border-top-right-radius: 6px; */
+    }
+
+    #footer_content {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 12px;
+      position: absolute;
+      text-align: right;
+    }
+
+    input, textarea, select, button {
+      font-size: 14px; 
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    #float-box, #console, #jsx-box {
+      width: 90%;
+      margin-top: 10px;
+    }
+
+    #jsxbox {
+      height: 35vh;
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 3px;
+    }
+
+    #console {
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 3px;
+    }
+/* 
+    #add_top_regions_button {
+      content: "Add";
+    }
+
+    #remove_top_regions_button {
+      content: "Remove";
+    }
+     */
+    #rolling_avg_box {
+      width: 200px;
+    }
+
+    #rolling_days {
+      width:24px;
+    }
+
+    /* .top_regions_buttons {
+      width: fit-content;
+      height: fit-content;
+    } */
+
+    .small-float-box {
+      line-height: normal;
+      background-color: rgb(247, 232, 216);
+      border: rgb(247, 232, 216);
+      display: inline-block;
+      vertical-align: top;
+      width: auto;
+      margin-top: 10px;
+      margin-left: 10px;
+      padding: 4px;
+      border-radius: 12px;
+    }
+    
+    .slider {
+      background: #945a0e;
+    }
+    
+    button {
+      background-color: #ffffff;
+      border: none;
+      color: f5c646;
+      padding: 17px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      border-radius: 12px;
+    }
+
+    .radio_container {
+      padding-left: calc(var(--radio_size)*1.59);
+      margin-top: calc(var(--radio_size) *1);
+      margin-bottom: calc(var(--radio_size) *1);
+      margin-right: calc(var(--radio_size) *1);
+      margin-left: calc(var(--radio_size) *1);
+    }
+
+    .slider::-webkit-slider-thumb {
+      background: #dba149;
+    }
+    
+    .slider::-moz-range-thumb {
+      background: #dba149;
+    }
+    
+    .radio_checkmark {
+      background-color: rgb(255, 255, 255);
+ 
+    }
+
+    
+    .region_labels_dark, .region_labels_dark_highlight {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      background: rgba(255, 255, 255, 0.438);
+      background-clip: padding-box;
+      opacity: 50%;
+      padding: 1px;
+      border-radius:5px;
+      text-shadow: /* text outline compatible with non-webkit */
+      -1px -1px 0 rgb(255, 255, 255),
+      1px -1px 0 rgb(255, 255, 255),
+      -1px 1px 0 rgb(255, 255, 255),
+      1px 1px 0 rgb(255, 255, 255);  
+    }
+
+    .region_labels_bright, .region_labels_bright_highlight {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      background: rgba(255, 255, 255, 0.438);
+      background-clip: padding-box;
+      opacity: 50%;
+      padding: 1px;
+      border-radius:5px;
+      text-shadow: /* text outline compatible with non-webkit */
+      -1px -1px 0 rgb(255, 255, 255),
+      /* 1px -1px 0 rgb(180, 180, 180), */
+      /* -1px 1px 0  rgb(180, 180, 180), */
+      1px 1px 0  rgb(180, 180, 180);
+    }
+
+
+
+  }
