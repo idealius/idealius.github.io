@@ -1,19 +1,23 @@
 ![Logo](/img/Spicy_Covid_Graphs_Logo.png)
 
-Link: (http://covid19graphs.42web.io/)
+<!--Link: (http://covid19graphs.42web.io/)-->
+
+This is a working demo of this project locked in at 12/7/2020:
+
+Link: (https://idealius.github.io/)
 
 
 ### Purpose:
 When doing personal risk assessment of COVID-19 in different contexts like local and global regions, other dashboards did not make it easy see regions overlayed and per population total. To rectify this would involve a lot of copy/pasting and data transposing in spreadsheets like Excel. The Python project listed in sources below is used to transpose Johns Hopkins data and convert it to rates. This makes the data easy to use in Tableau, Excel, etc.
 
-This project then takes that data outputted from the Python project (which also converts the data to .js files) and allows one to quickly overlay different regions - by user selection - or by ranking across N number of days for cases and deaths.
+Our current project then takes that data outputted from the Python project (which also converts the data to .js files) and allows one to quickly overlay different regions - by user selection - or by ranking by linear regressed slope across N number of days for cases or deaths.
 
 ### Features:
-Always shows data as percentage of population, so comparisons between regions is easier.
+Always shows data as percentage of population, so comparisons between regions is easier, and conversion to population numbers or peopler per 100 million is trivial.
 
 Rolling average slider.
 
-Always fills curves transparently -- mostly for aesthetic reasons, but also because it is sometimes easier to visualize differences between regions.
+Always fills curves transparently -- mostly for my own taste, but also because it is sometimes easier to visualize differences between regions.
 
 Totals printed to text area for ranking comparison across N number of days.
 
