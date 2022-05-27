@@ -1,0 +1,200 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Spicy Covid Graphs</title>
+  <meta name="description" content="Covid Sandbox">
+  <meta name="author" content="Leo Idler">
+
+  <link rel="icon" 
+      type="image/png" 
+      href="img/favicons/spicy.ico" />
+
+  <link rel="stylesheet" type="text/css" href="css/styles.css?version=052622">
+  <!-- <link rel="stylesheet" type="text/css" href="css/styles.css?v=1.0"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="third_party/jsxgraph.css" /> -->
+  <script>
+// Array Remove - By John Resig (MIT Licensed)
+    Array.prototype.rem = function(from, to) {
+        var rest = this.slice((to || from) + 1 || this.length);
+        this.length = from < 0 ? this.length + from : from;
+        return this.push.apply(this, rest);
+    };
+  </script>
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css?version=052622" />
+
+
+</head>
+
+<body>
+  <!-- <div class="loader"></div> -->
+  
+  <script src="third_party/jquery-3.5.1.min.js?version=052622"></script>
+  <!--<script src="third_party/jquery.csv.js"></script>  CSV reader, Deprecated -->
+  <script src="third_party/fminsearch.js?version=052622"></script> <!-- Linear Regression Script-->
+  <script src="third_party/newtonsmethod.js?version=052622"></script> <!-- Linear Regression Script-->
+  <script src="data/covid19_confirmed_US_rate.js?version=052622"></script>
+  <script src="data/covid19_deaths_US_rate.js?version=052622"></script>
+  <script src="data/covid19_confirmed_global_rate.js?version=052622"></script>
+  <script src="data/covid19_deaths_global_rate.js?version=052622"></script>
+  <script src="data/spanish_flu_conversion.js?version=052622"></script>
+
+  <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraphcore.js?version=052622"></script>
+  <script type="text/javascript" charset="UTF-8" src="third_party/jsxgraphsrc.js?version=052622"></script>
+  
+
+
+    <img id="banner_img" src="img/Spicy_Covid_Graphs_Logo.png" alt="Spicy Covid Graphs img">
+    <div id="banner_background"></div>
+  
+    <div id = "horiz-spacer"></div>
+    <div id = "horiz-spacer"></div>
+
+  
+  <div class="small-float-box">
+    <label class="radio_container">Cases
+    <input type="radio" id="affected_context_cases"  class="radio_checkmark"  name="affected_context" value="Cases">
+    <span class="radio_checkmark"></span>
+    </label>
+    <label class="radio_container">Deaths
+    <input type="radio" id="affected_context_deaths"  class="radio_checkmark"  name="affected_context" value="Deaths" checked>
+    <span class="radio_checkmark"></span>
+    </label>
+  </div>
+
+  <div class="small-float-box">
+    <label class="radio_container">US
+    <input type="radio" id="region_context_us" class="radio_checkmark" name="region_context" value="US" checked>
+    <span class="radio_checkmark"></span>
+    </label>
+    <label class="radio_container">Global
+    <input type="radio" id="region_context_global"  class="radio_checkmark" name="region_context" value="Global">
+    <span class="radio_checkmark"></span>
+    </label>
+  </div>
+
+  <div class='small-float-box'><button id="clear_button" type="button" >Clear Graph</button></div>
+
+  <p><b>Tip: Select Cases or Deaths and US or Global, then click "Show".</b>
+
+  <div id = "horiz-spacer"></div>
+  <div class="small-float-box">
+    <button type="button" id="add_top_regions_button" class="top_regions_buttons">Show</button>
+    <button type="button" id="remove_top_regions_button"   class="top_regions_buttons">Hide</button> top
+    <input type="text" id="top_regions" class="" name="top_regions" value="8" style="width: 32px">  
+    regions by 
+    <select id='slope_dropdown'>
+      <option>Fastest Rising</option>
+      <option>Highest Total</option>
+    </select>
+    rates across last 
+    <input type="text" id="top_regions_days" class="" name="top_regions_days" value="21" style="width: 32px"> 
+      days
+    
+  </div>
+
+  
+  <div class="small-float-box">
+  Show State/Country: <select id='regions_dropdown'><option>-- Select --</option></select>
+  <button type="button" id="hide_button">Hide</button>
+</div>
+
+
+
+
+  <!-- <div id = "horiz-spacer"></div> -->
+
+  <!-- <div id = "horiz-spacer"></div> -->
+
+  <div class="small-float-box">
+    <button type="button" id="reframe_button" >Both</button> :
+    <button type="button" id="clip_bound_button" >Clip Bounding Box</button>
+    <button type="button" id="arrange_button" >Rank Labels</button> by <select id='ranking_dropdown'>
+      <option>Slope</option>
+      <option>Total</option>
+      <option>Peak</option>
+    </select>
+  </div>
+
+  <!-- <div id = "horiz-spacer"></div> -->
+
+
+
+    <!-- <div id = "horiz-spacer"></div> -->
+
+
+
+
+  <!-- <div id = "horiz-spacer"></div> -->
+
+  <div class="small-float-box">
+  <button type="button" id="uk_spanish_flu_button" >Add UK Spanish Flu (Deaths)</button>
+  </div>
+
+  <div class="small-float-box">
+  <input type="checkbox" id="filled_graphs_checkbox" name="filled_graphs_checkbox" value="1">
+  <label for="filled_graphs_checkbox">Filled Graphs</label>
+  </div>
+
+<!--
+  <div class="small-float-box">
+    <button type="button" id="gen_curves" >Generate Curves (Experimental)</button>
+  </div>
+  <div id = "horiz-spacer"></div>
+  <div id="last_updated">
+    Data Sources Last Updated: 
+  </div>
+-->
+
+  <div id = "horiz-spacer"></div>
+
+  <div id="jsxbox"></div>
+
+  <div>
+    <div class="small-float-box" style='position: absolute; left: 5%; padding-top:10px; padding-bottom:10px; width:40%;'>
+        <input type="checkbox" id="sevendayavg"  name="sevendayavg" value="1" checked>
+        <label for="sevendayavg">Rolling day avg</label><br> 
+        <input type="text" id="rolling_days"  name="rolling_days" value="15">
+        <input type="range" min="3" max="99" value="7" style="width: var(--slider_width);" class="slider" id="rollingavgslider">
+    </div>
+
+    <div id="spacer" style="width: 100%; height: 110px; float: left;"></div> <!-- technique to horizontally space below absolute positioning-->
+  </div>
+
+  <!-- <div id = "horiz-spacer"></div>
+  <div id = "horiz-spacer"></div>
+  <div id = "horiz-spacer"></div>
+  <div id = "horiz-spacer"></div>
+  <div id = "horiz-spacer"></div>
+   -->
+  <textarea id="console" ></textarea>
+  <br>
+  <h3>COVID-19 Notes</h3>
+  
+  <p>1. Many region's reporting agencies warn the most recent days are subject to change. (Guesstimate: the last 3-17 days on average, but some places might even be a month slow.) Typically, they fill in higher as time passes.</p>
+  <p><b>Tip:</b> Using duplicate tabs of the page, check top 5 "Fastest Rising" for last 7 days, 14 days, 21 days and compare to get an overview.</p>
+  <p>2. a. The regions with high peaks for cases and deaths early in the pandemic are not necessarily appropriate to compare to regions now because the overall testing was most likely lower, and the deaths were most likely higher, then.</p>
+  <p>2. b. In fact, regions even on the same day will have different testing capacities and willingness for those experiencing symptoms to be tested, so also keep that in mind. However, there can be said there is a regional consistency depending on the regions being compared.</p>
+  <p>3. The congruent seasonality of COVID-19 and other transmissable diseases isn't well understood and is only hypothetical.</p>
+  <h3>Graph Notes</h3>
+
+  <p>1. Using the "Rank Labels" button in the graph does not have rolling average applied unless "Peak" is selected.</p>
+  <p>2. Ranking in the text area above is absolute for respective dataset (US or Global) and does not have the rolling average applied, though it is limited by the number of days selected.</p>
+  <p>3. Data sources originate from Johns Hopkins, using my Python Github project: <a href="https://github.com/idealius/transpose_covid_timeseries">transpose_covid_timeseries</a></p>
+  <p>4. UK Spanish flu deaths data was estimated from <i>Epidemic a Survey, by Edwin Jordan</i>: <a href="https://www.desmos.com/calculator/rpogjznmdo">https://www.desmos.com/calculator/g0g4tgjdcc</a></p>
+  
+  <h3>Prediction Notes</h3>
+  <p>The trouble with predicting COVID-19 has to do with maxima (top ends) for waves. They are unknowable until around the time they happen. This is partially why I created this website, so that people can keep an eye on timely information as it happens and view the graphs themselves comparing the regions they'd like to.</p>
+  <div id="footer_background"></div>
+  <div id="footer_content"><br><br><a href=https://github.com/idealius/covid-sandbox>About</a> | Website Authors: Leo E. Idler with help from Jennifer L. Sullivan | Special thanks to the <a href="https://www.facebook.com/groups/271763230697598/">COVID-19:Follow the Data with Evidence Facebook group</a> | Powered by:<a href="https://jquery.com/">JQuery</a> and <a href="https://jsxgraph.uni-bayreuth.de/wp/index.html">JSXGraph</a> | Free hosting provided by <a href="https://infinityfree.net">Infinityfree.net</a></div>
+
+
+  <div id = "horiz-spacer"></div>
+
+<script src="js/main.js?version=052622"></script>
+
+</body>
+</html>
