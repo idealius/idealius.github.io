@@ -4,7 +4,7 @@
 
 This is a working demo of this project locked in at 12/7/2020:
 
-Link: (https://idealius.github.io/)
+(https://idealius.github.io/)
 
 
 ### Purpose:
