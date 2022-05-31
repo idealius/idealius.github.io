@@ -2,7 +2,7 @@
 
 <!--Link: (http://covid19graphs.42web.io/)-->
 
-This is a working demo of this project locked in at 05/07/2022:
+This is a working demo of this project locked in at 05/31/22:
 
 (https://idealius.github.io/)
 
