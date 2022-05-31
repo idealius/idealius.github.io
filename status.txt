@@ -1,8 +1,0 @@
-formula for threshold for month abbreviation polished
-
-make a badass arrange label algorithm which uses an image-map and more
-watch black mirror
-find formula for days since etc. axis label position
-cookies settings
-better arrange coordination
-add powershell scripts as separate project
